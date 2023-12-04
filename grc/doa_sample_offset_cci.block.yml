@@ -2,10 +2,6 @@ id: doa_sample_offset_cci
 label: sample_offset_cci
 category: '[doa]'
 
-templates:
-  imports: from gnuradio import doa
-  make: doa.sample_offset_cci()
-
 #  Make one 'parameters' list entry for every parameter you want settable from the GUI.
 #     Keys include:
 #     * id (makes the value accessible as keyname, e.g. in the make entry)
@@ -13,10 +9,20 @@ templates:
 #     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
 #     * default
 parameters:
-- id: parametername_replace_me
-  label: FIX ME:
-  dtype: string
-  default: You need to fill in your grc/doa_sample_offset_cci.block.yaml
+- id: vector_len
+  label: Vector Length
+  dtype: int
+  default: 1
+- id: num_xcorr
+  label: Iterations
+  dtype: int
+  default: 1
+- id: showports
+  label: Show Msg Ports
+  dtype: enum
+  options: [FALSE, TRUE]
+  option_labels: ["Yes", "No"]
+
 #- id: ...
 #  label: ...
 #  dtype: ...
@@ -29,6 +35,17 @@ parameters:
 #      * vlen (optional - data stream vector length. Default is 1)
 #      * optional (optional - set to 1 for optional inputs. Default is 0)
 inputs:
+- label: in0
+  dtype: complex
+  vlen: ${vector_len}
+- label: in1
+  dtype: complex
+  vlen: ${vector_len}
+- label: recalc
+  domain: message
+  optional: 1
+
+
 #- label: ...
 #  domain: ...
 #  dtype: ...
@@ -36,6 +53,8 @@ inputs:
 #  optional: ...
 
 outputs:
+  - name: out
+    dtype: int
 #- label: ...
 #  domain: ...
 #  dtype: ...
@@ -44,4 +63,10 @@ outputs:
 
 #  'file_format' specifies the version of the GRC yml format used in the file
 #  and should usually not be changed.
+
+templates:
+  imports: from gnuradio import doa
+  make: doa.sample_offset_cci(${vector_len}, ${num_xcorr})
+
+
 file_format: 1

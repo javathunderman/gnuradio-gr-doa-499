@@ -22,7 +22,7 @@ if(NOT doa_sources)
 endif(NOT doa_sources)
 
 add_library(gnuradio-doa SHARED ${doa_sources})
-target_link_libraries(gnuradio-doa gnuradio::gnuradio-runtime)
+target_link_libraries(gnuradio-doa gnuradio::gnuradio-runtime gnuradio::gnuradio-blocks gnuradio::gnuradio-fft)
 target_include_directories(gnuradio-doa
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
     PUBLIC $<INSTALL_INTERFACE:include>

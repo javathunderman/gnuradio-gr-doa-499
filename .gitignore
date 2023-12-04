@@ -6,3 +6,4 @@ gr-doa/x-compile/out/
 build/
 out/
 *.pyc
+.vscode/

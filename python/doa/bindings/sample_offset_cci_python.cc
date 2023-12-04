@@ -14,7 +14,7 @@
 /* BINDTOOL_GEN_AUTOMATIC(0)                                                       */
 /* BINDTOOL_USE_PYGCCXML(0)                                                        */
 /* BINDTOOL_HEADER_FILE(sample_offset_cci.h)                                        */
-/* BINDTOOL_HEADER_FILE_HASH(004c45cb493826e801887d214ba68b19)                     */
+/* BINDTOOL_HEADER_FILE_HASH(dc578dfdcd95f1558e9e73063e94a4c1)                     */
 /***********************************************************************************/
 
 #include <pybind11/complex.h>
@@ -39,7 +39,7 @@ void bind_sample_offset_cci(py::module& m)
         .def(py::init(&sample_offset_cci::make),
            D(sample_offset_cci,make)
         )
-        
+
 
 
 

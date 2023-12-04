@@ -14,7 +14,7 @@ FIND_PATH(
 
 FIND_LIBRARY(
     GR_DOA_LIBRARIES
-    NAMES gnuradio-doa
+    NAMES gnuradio-doa sndfile
     HINTS $ENV{DOA_DIR}/lib
         ${PC_DOA_LIBDIR}
     PATHS ${CMAKE_INSTALL_PREFIX}/lib
